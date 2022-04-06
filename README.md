@@ -58,11 +58,11 @@ On continue de travailler sur la palette, mais à partir d'un code initial un pe
 
    Associez cet écouteur de changement à la propriété `nbClics` de chacun des 3 boutons.
 
-4. Modifiez l'implémentation de la méthode `changed(...)` de `nbClicsListener` afin de modifier également le label `texteDuBas`.
+4. Modifiez l'implémentation de la méthode `changed(...)` de `nbClicsListener` afin de modifier également le label `texteDuBas` (avec le même effet que dans l'exercice précédent).
 
 ### Exercice 3 - Liste observable
 
-Dans le fichier `MainPersonnes.java`, on va travailler avec une liste de personnes *lesPersonnes* qui peut évoluer, par ajout, suppression et modification d'éléments. Observez la déclaration et l'instanciation de cette liste, objet qui est une propriété `Observable`, ce qui signifie qu'on pourra y attacher des écouteurs, ou la lier à d'autres propriétés.
+Dans le fichier `MainPersonnes.java`, on va travailler avec une liste de personnes `lesPersonnes` qui peut évoluer, par ajout, suppression et modification d'éléments. Observez la déclaration et l'instanciation de cette liste, objet qui est une propriété `Observable`, ce qui signifie qu'on pourra y attacher des écouteurs, ou la lier à d'autres propriétés.
 
 1 - Dans cette question, vous allez compléter la ligne 17 du fichier `MainPersonnes.java`, de façon à définir un écouteur de changement sur la liste *lesPersonnes*.<br/>
 [ListChangeListener](https://openjfx.io/javadoc/17/javafx.base/javafx/collections/ListChangeListener) est une interface fonctionnelle dont la méthode à implémenter n'a qu'un argument. Cet argument, de type [ListChangeListener.Change](https://openjfx.io/javadoc/17/javafx.base/javafx/collections/ListChangeListener.Change.html), permet d'accéder aux informations des éléments qui ont changé dans la liste. Pour pouvoir exploiter un changement, il faut (au moins une fois) exécuter la méthode `next()` sur cet argument, et ensuite, suivant le type de changement, utiliser différentes méthodes.<br/>
