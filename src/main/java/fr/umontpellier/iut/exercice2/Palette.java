@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
@@ -27,7 +28,9 @@ public class Palette extends Application {
 
     private BorderPane root;
     private Pane panneau;
-    private HBox bas;
+    private HBox boutons;
+    private VBox bas;
+    private Label texteDuBas;
 
     private EventHandler<ActionEvent> gestionnaireEvenement;
 
@@ -38,13 +41,18 @@ public class Palette extends Application {
         texteDuHaut = new Label();
         texteDuHaut.setFont(Font.font("Tahoma",FontWeight.NORMAL, 20));
         BorderPane.setAlignment(texteDuHaut, Pos.CENTER);
+        texteDuBas = new Label();
 
         panneau = new Pane();
         panneau.setPrefSize(400,200);
 
-        bas = new HBox(10);
-        bas.setAlignment(Pos.CENTER);
-        bas.setPadding(new Insets(10,5,10,5));
+        boutons = new HBox(10);
+        boutons.setAlignment(Pos.CENTER);
+        boutons.setPadding(new Insets(10,5,10,5));
+
+        bas = new VBox();
+        bas.getChildren().addAll(boutons, texteDuBas);
+        bas.setAlignment(Pos.CENTER_RIGHT);
 
         vert = new CustomButton("Vert", "#31BCA4");
         rouge = new CustomButton("Rouge", "#F21411");
@@ -58,11 +66,11 @@ public class Palette extends Application {
         rouge.setOnAction(gestionnaireEvenement);
         bleu.setOnAction(gestionnaireEvenement);
 
-        bas.getChildren().addAll(vert, rouge, bleu);
+        boutons.getChildren().addAll(vert, rouge, bleu);
 
         root.setCenter(panneau);
         root.setTop(texteDuHaut);
-        root.setBottom(bas);
+        root.setBottom(boutons);
 
         Scene scene = new Scene(root);
 

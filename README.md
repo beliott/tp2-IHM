@@ -58,6 +58,7 @@ On continue de travailler sur la palette, mais à partir d'un code initial un pe
 
    Associez cet écouteur de changement à la propriété `nbClics` de chacun des 3 boutons.
 
+4. Modifiez l'implémentation de la méthode `changed(...)` de `nbClicsListener` afin de modifier également le label `texteDuBas`.
 
 ### Exercice 3 - Liste observable
 
