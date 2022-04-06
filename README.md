@@ -21,20 +21,25 @@ Tout au long du TP, vous pouvez avoir besoin de **consulter les pages de documen
 
 ### Exercice 1 - Source d'un événement, premières propriétés et bindings simples
 
-On reprend l'exercice 2 du premier TP qui change la couleur d'un panneau et affiche combien de fois un bouton a été cliqué.<center>
-![](images/Exo2.png)</center>
+On reprend l'exercice 2 du premier TP qui change la couleur d'un panneau et affiche combien de fois un bouton a été cliqué. Mais cette fois-ci nous allons complexifier un peu le comportement des éléments de la fenêtre. Désormais il faudrait que les clics changent également le texte et la couleur d'un label situé tout en bas de la fenêtre.
 
-1 - Complétez le code qui vous est fourni de façon à ne créer qu'un unique gestionnaire d'événement, que vous associerez ensuite à chacun des trois boutons.
+![](images/Exo1-a.png) ![](images/Exo1-b.png) ![](images/Exo1-c.png)
 
-2 - Ajoutez à la classe un attribut *nbFois* de classe `IntegerProperty` et instanciez-le dans un constructeur en utilisant la classe concrète `SimpleIntegerProperty`. Changez le code du gestionnaire d'événement de façon à utiliser cette propriété lors de l'affectation du texte du `Label`.
+Dans cet exercice vous allez utiliser 
 
-3 - Ajouter maintenant un attribut *message* de classe `StringProperty`, instanciez-le dans le constructeur en utilisant `SimpleStringProperty`. Dans le gestionnaire d'événement, ce message sera affecté au texte du `Button`. Reprenez le code de façon à ne pas dupliquer de lignes.
+1. Associez à chacun des trois boutons, 3 événements avec la méthode de convenance `setOnAction(event -> ...)`. 
 
-4 - Transformez l'affectation du texte du `Label` en un binding sur la propriété `Text` du `Label`, et déplacez ce nouveau code à l'extérieur du gestionnaire d'événement. Vous utiliserez la méthode statique `concat(...)` de `Bindings` (pour concaténer un nombre variable de chaines), et la méthode `asString()` (pour lier avec une `String` correspondant une expression numérique). Vous pouvez consulter la documentation pour cela. Pour l'instant, vous ne vous préoccupez pas de l'état initial du `Label`.
+2. Ajoutez à la classe un attribut `nbFois` de classe `IntegerProperty` et instanciez-le dans un constructeur en utilisant la classe concrète `SimpleIntegerProperty`. Cette **propriété** devra changer dynamiquement en fonction du bouton cliqué et du nombre de clics. Changez le code de vos gestionnaires d'événement de façon à utiliser la propriété `nbFois` lors de l'affectation du texte du label `texteDuHaut`.
 
-5 - De même, déclarez et instancier un attribut *couleurPanneau* de classe `StringProperty`, mettez à jour cet objet dans le gestionnaire d'événement en utilisant (uniquement) la valeur de la couleur correspondante au bouton choisi, et enfin ajoutez un binding sur la propriété `Style` du panneau.
+3. Ajoutez maintenant un attribut `message` de classe `StringProperty`, instanciez-le dans le constructeur en utilisant `SimpleStringProperty`. Dans les gestionnaires d'événement, ce message sera affecté au texte du `Button`.
 
-6 - Extrayez les deux instructions de binding dans une méthode `createBindings()`. Dans cette méthode, déclarez une variable `pasEncoreDeClic` de classe `BooleanProperty` et instanciez-la. Liez cette variable de façon à ce qu'elle change lorsque `nbFois` n'est plus égal à 0. Pour cela, retrouvez la version appropriée de la méthode `equal()` de `Bindings`.<br/>Transformez ensuite le binding sur le `Label` afin de gérer sa valeur initiale en utilisant `Bindings.when`.
+4. Transformez l'affectation du texte du label `texteDuHaut` en un **binding** sur la propriété `Text` du label et déplacez ce nouveau code à l'extérieur du gestionnaire d'événement. Vous utiliserez la méthode statique `concat(...)` de la classe [`Bindings`](https://openjfx.io/javadoc/17/javafx.base/javafx/beans/binding/Bindings.html) (pour concaténer un nombre variable de chaînes de caractères), et la méthode `asString()` (pour lier avec une `String` correspondant à une expression numérique). Pour l'instant, ne vous préoccupez pas de l'état initial du `Label`.
+
+5. De même, déclarez et instanciez un attribut `couleurPanneau` de classe `StringProperty`, mettez à jour cet objet dans le gestionnaire d'événement en utilisant (uniquement) la valeur de la couleur correspondante au bouton choisi, et enfin ajoutez un binding sur la propriété `Style` du panneau.
+
+6. Extrayez les deux instructions de binding dans une méthode privée `createBindings()`. Dans cette méthode, déclarez et instanciez une variable `pasEncoreDeClic` de type `BooleanProperty`. Liez cette variable de façon à ce qu'elle change lorsque `nbFois` n'est plus égal à 0. Pour cela, retrouvez la version appropriée de la méthode `equal()` de `Bindings`.<br/>Transformez ensuite le binding sur le label `texteDuHaut` afin de gérer sa valeur initiale en utilisant `Bindings.when`.
+
+7. Sans toucher au code des gestionnaires d'événement de vos boutons, faites en sorte que le label `texteDuBas` affiche le texte en fonction de `message` et de `couleurPanneau`. Par exemple, si le bouton *Rouge* a été cliqué, le texte de  `texteDuBas` devrait être colorié en rouge et afficher "*Le Rouge est une jolie couleur !*".
 
 ### Exercice 2 - Écouteur de changement
 
