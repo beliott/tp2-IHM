@@ -24,7 +24,7 @@ Le but de ce TP est de vous familiariser avec la notion de [**Propriété**](htt
 
 La notion sœur de propriété et la notion de [**binding**]. Il s'agit d'une valeur (donnée) **X** qui est liée à un certain nombre de valeurs observables **x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>...** : si un changement d'une des valeurs observables a lieu, alors **X** est automatiquement recalculé. Toutes les classes de propriétés de JavaFX permettent la création des bindings.
 
-### Exercice 1 - Source d'un événement, premières propriétés et bindings simples
+### Exercice 1 - Premières propriétés et bindings simples
 
 On reprend l'exercice 2 du premier TP qui change la couleur d'un panneau et affiche combien de fois un bouton a été cliqué. Mais cette fois-ci nous allons complexifier un peu le comportement des éléments de la fenêtre. Désormais il faudrait que les clics changent également le texte et la couleur d'un label situé tout en bas de la fenêtre.
 
@@ -43,17 +43,21 @@ On reprend l'exercice 2 du premier TP qui change la couleur d'un panneau et affi
 
 7. Extrayez les deux instructions de binding dans une méthode privée `createBindings()`. Dans cette méthode, déclarez et instanciez une variable `pasEncoreDeClic` de type `BooleanProperty`. Liez cette variable de façon à ce qu'elle change lorsque `nbFois` n'est plus égal à 0. Pour cela, retrouvez la version appropriée de la méthode `equal()` de `Bindings`.<br/>Transformez ensuite le binding sur le label `texteDuHaut` afin de gérer sa valeur initiale en utilisant `Bindings.when`.
 
-8. Sans toucher au code des gestionnaires d'événement de vos boutons, faites en sorte que le label `texteDuBas` affiche le texte en fonction de `message` et de `couleurPanneau`. Par exemple, si le bouton *Rouge* a été cliqué, le texte de  `texteDuBas` devrait être colorié en rouge et afficher "*Le Rouge est une jolie couleur !*".
+8. **Sans toucher au code** des gestionnaires d'événement de vos boutons, faites en sorte que le label `texteDuBas` affiche le texte en fonction de `message` et de `couleurPanneau`. Par exemple, si le bouton *Rouge* a été cliqué, le texte de `texteDuBas` devrait être colorié en rouge et afficher "*Le Rouge est une jolie couleur !*".
+
 
 ### Exercice 2 - Écouteur de changement
 
 On continue de travailler sur la palette, mais à partir d'un code initial un peu différent. Consultez les fichiers `Palette.java` et `CustomButton.java`.
 
-1 - Ajoutez dans la classe `CustomButton` les 3 méthodes usuelles pour la propriété *nbClics* (pensez à utiliser les facilités de votre IDE...). Ajoutez aussi la méthode `getCouleur()`.
+1. Ajoutez dans la classe `CustomButton` les 3 méthodes usuelles pour la propriété `nbClics` (pensez à utiliser les facilités de votre IDE...). Ajoutez aussi la méthode `getCouleur()`.
 
-2 - Ajoutez, dans le gestionnaire d'événement, le code qui incrémente le nombre de clics du bouton qui a reçu l'événement. 
+2. Ajoutez, dans le gestionnaire d'événement de la classe `Palette`, le code qui incrémente le nombre de clics du bouton qui a reçu l'événement. 
 
-3 - Définissez un attribut *nbClicsListener* de type `ChangeListener<Number>` et implémentez-le dans la méthode `start()` de façon à actualiser le `Label` et le style du panneau.<br/>Associez cet écouteur de changement à la propriété *nbClics* de chacun des 3 boutons.
+3. Définissez un attribut `nbClicsListener` de type [`ChangeListener<Number>`](https://openjfx.io/javadoc/17/javafx.base/javafx/beans/value/ChangeListener.html) et implémentez-le dans la méthode `start()` (de la classe `Palette`) de façon à actualiser le label `texteDuHaut` et le style du panneau. Pour vous guider, remarquez que l'interface `ChangeListener<T>` est une interface fonctionnelle de JavaFX, sa seule fonction abstraite étant `changed(ObservableValue<? extends T> obsevée, T ancienneValeur, T nouvelleValeur)`. Le paramètre `observée` correspond à la source à laquelle l'écouteur sera associée, les deux autres paramètres étant la valeur actuelle de la source et la nouvelle valeur à utiliser. 
+
+   Associez cet écouteur de changement à la propriété `nbClics` de chacun des 3 boutons.
+
 
 ### Exercice 3 - Liste observable
 

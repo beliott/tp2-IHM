@@ -1,14 +1,11 @@
 package fr.umontpellier.iut.exercice2;
 
 import javafx.application.Application;
-import javafx.beans.binding.Bindings;
-import javafx.beans.property.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -20,7 +17,7 @@ import javafx.stage.Stage;
 @SuppressWarnings("Duplicates")
 public class Palette extends Application {
 
-    private Label label;
+    private Label texteDuHaut;
 
     private CustomButton vert;
     private CustomButton rouge;
@@ -32,15 +29,15 @@ public class Palette extends Application {
     private Pane panneau;
     private HBox bas;
 
-    private EventHandler<ActionEvent> eventHandler;
+    private EventHandler<ActionEvent> gestionnaireEvenement;
 
     @Override
     public void start(Stage primaryStage) {
         root = new BorderPane();
 
-        label = new Label();
-        label.setFont(Font.font("Tahoma",FontWeight.NORMAL, 20));
-        BorderPane.setAlignment(label, Pos.CENTER);
+        texteDuHaut = new Label();
+        texteDuHaut.setFont(Font.font("Tahoma",FontWeight.NORMAL, 20));
+        BorderPane.setAlignment(texteDuHaut, Pos.CENTER);
 
         panneau = new Pane();
         panneau.setPrefSize(400,200);
@@ -53,18 +50,18 @@ public class Palette extends Application {
         rouge = new CustomButton("Rouge", "#F21411");
         bleu = new CustomButton("Bleu", "#3273A4");
 
-        eventHandler = (event) -> {
+        gestionnaireEvenement = (event) -> {
             sourceOfEvent = (CustomButton) event.getSource();
         };
 
-        vert.setOnAction(eventHandler);
-        rouge.setOnAction(eventHandler);
-        bleu.setOnAction(eventHandler);
+        vert.setOnAction(gestionnaireEvenement);
+        rouge.setOnAction(gestionnaireEvenement);
+        bleu.setOnAction(gestionnaireEvenement);
 
         bas.getChildren().addAll(vert, rouge, bleu);
 
         root.setCenter(panneau);
-        root.setTop(label);
+        root.setTop(texteDuHaut);
         root.setBottom(bas);
 
         Scene scene = new Scene(root);
