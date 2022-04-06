@@ -1,14 +1,12 @@
 package fr.umontpellier.iut.exercice4;
 
-import javafx.beans.Observable;
 import javafx.beans.binding.IntegerBinding;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
 
+@SuppressWarnings("Duplicates")
 public class MainPersonnes {
 
     private static SimpleListProperty<Personne> lesPersonnes;

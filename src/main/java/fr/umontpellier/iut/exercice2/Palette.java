@@ -17,6 +17,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
+@SuppressWarnings("Duplicates")
 public class Palette extends Application {
 
     private Label label;
@@ -34,7 +35,7 @@ public class Palette extends Application {
     private EventHandler<ActionEvent> eventHandler;
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) {
         root = new BorderPane();
 
         label = new Label();

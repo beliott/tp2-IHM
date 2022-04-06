@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 
+@SuppressWarnings("Duplicates")
 public class MainPersonnes  {
 
     private static ObservableList<Personne> lesPersonnes;
