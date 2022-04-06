@@ -22,7 +22,7 @@ Tout au long du TP, vous aurez certainement besoin de **consulter les pages de d
 
 Le but de ce TP est de vous familiariser avec la notion de [**Propriété**](https://wiki.openjdk.java.net/display/OpenJFX/JavaFX+Property+Architecture) en JavaFX. Pour un objet donné, les propriétés définissent son état accessible en lecture/écriture, et qui de plus, peut être _observé_ lors de son changement. 
 
-La notion sœur de propriété et la notion de [**binding**]. Il s'agit d'une valeur (donnée) **X** qui est liée à un certain nombre de valeurs observables **x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>...** : si un changement d'une des valeurs observables a lieu, alors **X** est automatiquement recalculé. Toutes les classes de propriétés de JavaFX permettent la création des bindings.
+La notion sœur de propriété et la notion de **binding**. Il s'agit d'une valeur **X** qui est _liée_ à un certain nombre de valeurs observables **x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>...** : si un changement d'une des valeurs observables a lieu, alors **X** est automatiquement recalculé. Toutes les classes de propriétés de JavaFX permettent la création des bindings.
 
 ### Exercice 1 - Premières propriétés et bindings simples
 
@@ -80,11 +80,11 @@ Pour l'instant, votre code ne traitera qu'un seul ajout à la fois, et se conten
 
 ### Exercice 4 - Low-level binding
 
-On souhaite maintenant faire calculer automatiquement l'âge moyen des personnes dans la liste *lesPersonnes*. Consultez la nouvelle version des classes qui vous sont fournies.
+On souhaite maintenant faire calculer automatiquement l'âge moyen des personnes dans la liste `lesPersonnes`. Consultez la nouvelle version des classes qui vous sont fournies.
 
-1. Écrivez un binding *calculAgeMoyen*, dont vous vous servirez pour que l'attribut *ageMoyen* soit actualisé au fur et à mesure des modifications de la liste *lesPersonnes*. Vous compléterez la classe `Personne` avec les méthodes dont vous pourriez avoir besoin, ainsi que le code de la fonction `main`, avant de tester avec la méthode `question1()`.
+1. Écrivez un binding `calculAgeMoyen`, dont vous vous servirez pour que l'attribut `ageMoyen` soit actualisé au fur et à mesure des modifications de la liste `lesPersonnes`. Vous compléterez la classe `Personne` avec les méthodes dont vous pourriez avoir besoin, ainsi que le code de la fonction `main(String[] args)`, avant de tester avec la méthode `question1()`.
 
-2. Écrivez un second binding *calculNbParisiens*, qui permettra de connaitre, grâce à l'attribut *nbParisiens*, le nombre de personnes nées à Paris. Testez ensuite avec la méthode `question2()`.
+2. Écrivez un second binding `calculNbParisiens`, qui permettra de connaitre, grâce à l'attribut `nbParisiens`, le nombre de personnes nées à Paris. Testez ensuite avec la méthode `question2()`.
 
 ### Exercice 5 - Bindings
 
