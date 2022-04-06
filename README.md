@@ -22,7 +22,7 @@ Tout au long du TP, vous aurez certainement besoin de **consulter les pages de d
 
 Le but de ce TP est de vous familiariser avec la notion de [**Propriété**](https://wiki.openjdk.java.net/display/OpenJFX/JavaFX+Property+Architecture) en JavaFX. Pour un objet donné, les propriétés définissent son état accessible en lecture/écriture, et qui de plus, peut être _observé_ lors de son changement. 
 
-La notion sœur de propriété et la notion de [**binding**]. Il s'agit d'une valeur (donnée) **x** qui est liée à un certain nombre de valeurs observables **x1, x2, ...** : si un changement d'une des valeurs observables a lieu, alors **x** est automatiquement recalculé. Toutes les classes de propriétés de JavaFX permettent la création des bindings.
+La notion sœur de propriété et la notion de [**binding**]. Il s'agit d'une valeur (donnée) **X** qui est liée à un certain nombre de valeurs observables **x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>...** : si un changement d'une des valeurs observables a lieu, alors **X** est automatiquement recalculé. Toutes les classes de propriétés de JavaFX permettent la création des bindings.
 
 ### Exercice 1 - Source d'un événement, premières propriétés et bindings simples
 
