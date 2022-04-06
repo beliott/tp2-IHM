@@ -17,15 +17,18 @@
 
 ## TP 2 : gestionnaires d'événement et propriétés
 
-Tout au long du TP, vous pouvez avoir besoin de **consulter les pages de documentation** de JavaFX, qui sont [disponibles ici](https://openjfx.io/javadoc/17/).
+Tout au long du TP, vous aurez certainement besoin de **consulter les pages de documentation** de JavaFX, qui sont [disponibles ici](https://openjfx.io/javadoc/17/).
+
+
+Le but de ce TP est de vous familiariser avec la notion de [**Propriété**](https://wiki.openjdk.java.net/display/OpenJFX/JavaFX+Property+Architecture) en JavaFX. Pour un objet donné, les propriétés définissent son état accessible en lecture/écriture, et qui de plus, peut être _observé_ lors de son changement. 
+
+La notion sœur de propriété et la notion de [**binding**]. Il s'agit d'une valeur (donnée) **x** qui est liée à un certain nombre de valeurs observables **x1, x2, ...** : si un changement d'une des valeurs observables a lieu, alors **x** est automatiquement recalculé. Toutes les classes de propriétés de JavaFX permettent la création des bindings.
 
 ### Exercice 1 - Source d'un événement, premières propriétés et bindings simples
 
 On reprend l'exercice 2 du premier TP qui change la couleur d'un panneau et affiche combien de fois un bouton a été cliqué. Mais cette fois-ci nous allons complexifier un peu le comportement des éléments de la fenêtre. Désormais il faudrait que les clics changent également le texte et la couleur d'un label situé tout en bas de la fenêtre.
 
 ![](images/Exo1-a.png) ![](images/Exo1-b.png) ![](images/Exo1-c.png)
-
-Dans cet exercice vous allez utiliser 
 
 1. Associez à chacun des trois boutons, 3 événements avec la méthode de convenance `setOnAction(event -> ...)`. 
 
