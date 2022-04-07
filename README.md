@@ -81,10 +81,9 @@ Dans le fichier `MainPersonnes.java`, on va travailler avec une liste de personn
 5. Ajoutez un second écouteur (par exemple `plusieursChangementsListener`) sur la liste `lesPersonnes`. Cet écouteur gèrera plusieurs changements à la fois. Testez avec la méthode `question5()`. Vous pouvez constater que le listener est déclenché plusieurs fois dans le cas d'une modification de l'âge (par exemple en ajoutant un affichage en fin du code du listener).
 
 ### Exercice 4 - Low-level binding
+Dans cet exercice, à chaque ajout/suppression/changement de personne dans la liste des personnes, on souhaite pouvoir recalculer automatiquement les informations de la liste en fonction de l'**intégralité** de son contenu. Les bindings simples (haut-niveau) ne sont donc pas suffisants.
 
-On souhaite maintenant faire calculer automatiquement l'âge moyen des personnes dans la liste `lesPersonnes`. Consultez la nouvelle version des classes qui vous sont fournies. 
-
-Pour utiliser des bindings de bas niveau il y a trois étapes à respecter :
+Le bindings bas-niveau (low-level bindings) apporte plus de flexibilité modulo quelques lignes de code supplémentaires. Pour utiliser des bindings de bas niveau il y a trois étapes à respecter :
 
 * Créer un objet qui correspondra à votre binding (par exemple de sous-type de `DoubleBinding` si la liaison doit se faire sur un nombre réel).
 * Faire un appel à la fonction `bind(Observable... dépendances)` de la superclasse en lui passant en paramètre les dépendances à lier. Toutes les classes de binding ont une implémentation de la méthode `bind(Observable... dépendances)`.
@@ -117,7 +116,8 @@ Voici un exemple de création de binding bas niveau pour le calcul de l'aire d'u
     System.out.println(aire.get()); // affiche 70
 ```
 
-1. Instanciez le binding `calculAgeMoyen`, dont vous vous servirez pour que l'attribut `ageMoyen` soit actualisé au fur et à mesure des modifications de la liste `lesPersonnes`. Vous compléterez la classe `Personne` avec les méthodes dont vous pourriez avoir besoin, ainsi que le code de la fonction `main(String[] args)`, avant de tester avec la méthode `question1()`.
+
+1. On souhaite maintenant faire calculer automatiquement l'âge moyen des personnes dans la liste `lesPersonnes`. Consultez la nouvelle version des classes qui vous sont fournies. Instanciez le binding `calculAgeMoyen`, dont vous vous servirez pour que l'attribut `ageMoyen` soit actualisé au fur et à mesure des modifications de la liste `lesPersonnes`. Vous compléterez la classe `Personne` avec les méthodes dont vous pourriez avoir besoin, ainsi que le code de la fonction `main(String[] args)`, avant de tester avec la méthode `question1()`.
 
 2. Écrivez un second binding `calculNbParisiens`, qui permettra de connaitre, grâce à l'attribut `nbParisiens`, le nombre de personnes nées à Paris. Testez ensuite avec la méthode `question2()`.
 
