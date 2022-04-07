@@ -1,12 +1,9 @@
 package fr.umontpellier.iut.exercice5;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-
-import java.io.IOException;
 
 public class LoginControl extends GridPane {
     @FXML
@@ -15,26 +12,14 @@ public class LoginControl extends GridPane {
     @FXML
     private PasswordField pwd;
 
-    public LoginControl() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass()/*.getClassLoader()*/.getResource("/exercice5/LoginView.fxml"));
-        fxmlLoader.setRoot(this);
-        fxmlLoader.setController(this);
-
-        try {
-            fxmlLoader.load();
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }
-        createBindings();
-    }
-
     private void createBindings() {
+        // MÉTHODE À COMPLÉTER
     }
 
     @FXML
     private void okClicked() {
         System.out.print(userId.getText() + " ");
-        for (char c: pwd.getText().toCharArray()){
+        for (char c : pwd.getText().toCharArray()) {
             System.out.print("*");
         }
         System.out.println();

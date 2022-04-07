@@ -98,7 +98,7 @@ Voici un exemple de création de binding bas niveau pour le calcul de l'aire d'u
     DoubleProperty aire = new SimpleDoubleProperty(); // valeur qui sera calculée à la volée
     
     DoubleBinding aireBinding = new DoubleBinding() {
-        // constructeur de la classe internene anonyme
+        // constructeur de la classe interne anonyme
         {
            this.bind(hauteur, largeur); // appel du constructeur de la classe mère (DoubleBinding)
         }
@@ -123,8 +123,11 @@ Voici un exemple de création de binding bas niveau pour le calcul de l'aire d'u
 
 ### Exercice 5 - Bindings
 
-On reprend l'exercice du précédent TP qui affiche une interface de login.<br/>
+On reprend l'exercice du précédent TP qui affiche une interface de login.
+
 Complétez la méthode `createBindings()` afin que :
 - le champ du mot de passe ne soit pas éditable si le nom de l'utilisateur fait moins de 6 caractères,
 - le bouton `cancel` ne soit pas cliquable si les deux champs sont vides,
 - le bouton `ok` ne soit pas cliquable tant que le mot de passe n'a pas au moins 8 caractères, et ne contient pas au moins une majuscule et un chiffre.
+
+**Remarque** : n'oubliez pas d'initialiser correctement votre contrôleur...
