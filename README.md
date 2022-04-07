@@ -82,9 +82,42 @@ Dans le fichier `MainPersonnes.java`, on va travailler avec une liste de personn
 
 ### Exercice 4 - Low-level binding
 
-On souhaite maintenant faire calculer automatiquement l'âge moyen des personnes dans la liste `lesPersonnes`. Consultez la nouvelle version des classes qui vous sont fournies.
+On souhaite maintenant faire calculer automatiquement l'âge moyen des personnes dans la liste `lesPersonnes`. Consultez la nouvelle version des classes qui vous sont fournies. 
 
-1. Écrivez un binding `calculAgeMoyen`, dont vous vous servirez pour que l'attribut `ageMoyen` soit actualisé au fur et à mesure des modifications de la liste `lesPersonnes`. Vous compléterez la classe `Personne` avec les méthodes dont vous pourriez avoir besoin, ainsi que le code de la fonction `main(String[] args)`, avant de tester avec la méthode `question1()`.
+Pour utiliser des bindings de bas niveau il y a trois étapes à respecter :
+
+* Créer un objet qui correspondra à votre binding (par exemple de sous-type de `DoubleBinding` si la liaison doit se faire sur un nombre réel).
+* Faire un appel à la fonction `bind(Observable... dépendances)` de la superclasse en lui passant en paramètre les dépendances à lier. Toutes les classes de binding ont une implémentation de la méthode `bind(Observable... dépendances)`.
+* Redéfinir la méthode `computeValue()` en écrivant le code qui calculera (et retournera) la valeur courante du binding.
+
+Voici un exemple de création de binding bas niveau pour le calcul de l'aire d'un rectangle :
+
+```java
+    DoubleProperty hauteur = new SimpleDoubleProperty(7.0);
+    DoubleProperty largeur = new SimpleDoubleProperty(5.0);
+    
+    DoubleProperty aire = new SimpleDoubleProperty(); // valeur qui sera calculée à la volée
+    
+    DoubleBinding aireBinding = new DoubleBinding() {
+        // constructeur de la classe internene anonyme
+        {
+           this.bind(hauteur, largeur); // appel du constructeur de la classe mère (DoubleBinding)
+        }
+
+        @Override
+        protected double computeValue() {
+            return hauteur.get() * largeur.get();
+        }
+    };
+    aire.bind(aireBinding); // Liaison de la propriété aire au binding
+    //  tous les changements de la hauteur et de la largeur vont être pris en compte :
+        
+    System.out.println(aire.get()); // affiche 35
+    largeur.setValue(10);
+    System.out.println(aire.get()); // affiche 70
+```
+
+1. Instanciez le binding `calculAgeMoyen`, dont vous vous servirez pour que l'attribut `ageMoyen` soit actualisé au fur et à mesure des modifications de la liste `lesPersonnes`. Vous compléterez la classe `Personne` avec les méthodes dont vous pourriez avoir besoin, ainsi que le code de la fonction `main(String[] args)`, avant de tester avec la méthode `question1()`.
 
 2. Écrivez un second binding `calculNbParisiens`, qui permettra de connaitre, grâce à l'attribut `nbParisiens`, le nombre de personnes nées à Paris. Testez ensuite avec la méthode `question2()`.
 
