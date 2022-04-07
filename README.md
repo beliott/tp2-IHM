@@ -64,19 +64,21 @@ On continue de travailler sur la palette, mais à partir d'un code initial un pe
 
 Dans le fichier `MainPersonnes.java`, on va travailler avec une liste de personnes `lesPersonnes` qui peut évoluer, par ajout, suppression et modification d'éléments. Observez la déclaration et l'instanciation de cette liste, objet qui est une propriété `Observable`, ce qui signifie qu'on pourra y attacher des écouteurs, ou la lier à d'autres propriétés.
 
-1. Dans cette question, vous allez compléter la ligne 18 du fichier `MainPersonnes.java`, de façon à définir un écouteur de changement sur la liste `lesPersonnes`.<br/>
-[ListChangeListener](https://openjfx.io/javadoc/17/javafx.base/javafx/collections/ListChangeListener) est une interface fonctionnelle dont la méthode à implémenter n'a qu'un argument. Cet argument, de type [ListChangeListener.Change](https://openjfx.io/javadoc/17/javafx.base/javafx/collections/ListChangeListener.Change.html), permet d'accéder aux informations des éléments qui ont changé dans la liste. Pour pouvoir exploiter un changement, il faut (au moins une fois) exécuter la méthode `next()` sur cet argument, et ensuite, suivant le type de changement, utiliser différentes méthodes.<br/>
-Pour savoir quel type de changement a eu lieu, vous pouvez utiliser des méthodes booléennes comme `wasAdded()`, `wasRemoved()`, `wasUpdated()` etc. On peut aussi utiliser la méthode `getAddedSubList()` qui retourne la liste de tous les éléments ajoutés. Pensez à lire la documentation de [ListChangeListener.Change](https://openjfx.io/javadoc/17/javafx.base/javafx/collections/ListChangeListener.Change.html).
+1. Dans cette question, vous allez compléter la fonction principale `main(String args[])` de la classe `MainPersonnes`, de façon à définir un écouteur de changement sur la liste `lesPersonnes` (variable `unChangementListener`).
 
-Pour l'instant, votre code ne traitera qu'un seul ajout à la fois, et se contentera d'afficher "_Pierre a été ajouté_" (quand la personne dont le nom est "_Pierre_" a été ajoutée...). Invoquez la méthode `question1()` pour voir le résultat.
+    [ListChangeListener](https://openjfx.io/javadoc/17/javafx.base/javafx/collections/ListChangeListener) est une interface fonctionnelle dont la méthode à implémenter n'a qu'un argument. Cet argument, de type [ListChangeListener.Change](https://openjfx.io/javadoc/17/javafx.base/javafx/collections/ListChangeListener.Change.html), permet d'accéder aux informations des éléments qui ont changé dans la liste. Pour pouvoir exploiter un changement, il faut (au moins une fois) exécuter la méthode `next()` sur cet argument, et ensuite, suivant le type de changement, appliquer les changements voulus (le code dé réaction).
+ 
+    Pour savoir quel type de changement a eu lieu, vous pouvez utiliser des méthodes booléennes comme `wasAdded()`, `wasRemoved()`, `wasUpdated()` etc. On peut aussi utiliser la méthode `getAddedSubList()` qui retourne la liste de tous les éléments ajoutés. Pensez à lire la documentation de [ListChangeListener.Change](https://openjfx.io/javadoc/17/javafx.base/javafx/collections/ListChangeListener.Change.html) avant de poursuivre.
+
+    Pour l'instant, votre code ne traitera qu'un seul ajout à la fois, et se contentera d'afficher "_Pierre a été ajouté_" (quand la personne dont le nom est "_Pierre_" a été ajoutée...). Invoquez la méthode `question1()` pour voir le résultat.
 
 2. On continue avec la suppression d'une personne de la liste, avec un code, à ajouter à l'existant, qui utilise maintenant `getRemoved()` et qui affiche "_Pierre a été enlevé_". Testez en remplaçant le précédent appel par celui de la méthode `question2()`.
 
 3. Écrivez maintenant un code qui devrait réagir à une modification de l'âge en écrivant "_Pierre a maintenant ... ans_", et testez en appelant maintenant `question3()`. Vous devriez constater que l'écouteur ne réagit pas. Pourquoi ?
 
-4. Transformez maintenant l'instanciation de la liste `lesPersonnes` par `FXCollections.observableArrayList(personne -> new Observable[] {personne.ageProperty()});`, qui permet d'exprimer que l'on souhaite écouter les changements sur la propriété `age` de la classe `Personne`. Modifiez le code dans `Personne.java` en conséquence pour pouvoir compiler et testez à nouveau avec `question3()`.
+4. Transformez maintenant l'instanciation de la liste `lesPersonnes` par `FXCollections.observableArrayList(personne -> new Observable[] {personne.ageProperty()});`, qui permet d'exprimer que l'on souhaite écouter les changements sur la propriété `age` de la classe `Personne`. Modifiez le code dans la classe `Personne` en conséquence pour pouvoir compiler et testez à nouveau avec `question3()`.
 
-5. Ajoutez un second écouteur `plusieursChangementsListener` sur la liste `lesPersonnes`. Cet écouteur gèrera plusieurs changements à la fois. Testez avec la méthode `question5()`. Vous pouvez constater que le listener est déclenché plusieurs fois dans le cas d'une modification de l'âge (par exemple en ajoutant un affichage en fin du code du listener).
+5. Ajoutez un second écouteur (par exemple `plusieursChangementsListener`) sur la liste `lesPersonnes`. Cet écouteur gèrera plusieurs changements à la fois. Testez avec la méthode `question5()`. Vous pouvez constater que le listener est déclenché plusieurs fois dans le cas d'une modification de l'âge (par exemple en ajoutant un affichage en fin du code du listener).
 
 ### Exercice 4 - Low-level binding
 
