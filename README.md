@@ -131,3 +131,18 @@ Complétez la méthode `createBindings()` afin que :
 - le bouton `ok` ne soit pas cliquable tant que le mot de passe n'a pas au moins 8 caractères, et ne contient pas au moins une majuscule et un chiffre.
 
 **Remarque** : n'oubliez pas d'initialiser correctement votre contrôleur...
+
+
+
+### Exercice 6 - Bindings bidirectionnels
+
+Dans cet exercice, on cherche à visualiser la correspondance entre deux températures, l'une exprimée en degrés Celsius et l'autre en degrés Fahrenheit.
+Pour cela, on utilisera 2 composants graphiques `Slider`, le premier (donnant la température en Celsius) qui pourra varier entre 0°C et 100°C, et le second qui pourra varier entre 0°F et 212°F, comme sur l'image ci-dessous :
+
+![](images/Exo6.png)
+
+Pour plus d'informations sur la relation entre les deux unités de mesure de température et les règles de conversion : https://fr.wikipedia.org/wiki/Degr%C3%A9_Fahrenheit
+
+1. Créez un binding bidirectionnel qui permettra que toute variation d'un des 2 curseurs provoque automatiquement le changement correspondant dans le second.
+
+2. Ajoutez maintenant les températures exprimées sous forme de texte dans les`TextField` et faites en sorte qu'elles soient liées de manière bidirectionnelle avec les sliders correspondants. Vous pourrez avoir besoin d'utiliser la méthode statique [`bindBidirectional`](https://openjfx.io/javadoc/17/javafx.base/javafx/beans/binding/Bindings.html#bindBidirectional(javafx.beans.property.Property,javafx.beans.property.Property,javafx.util.StringConverter)) de la classe utilitaire [`Bindings`](https://openjfx.io/javadoc/17/javafx.base/javafx/beans/binding/Bindings.html).<br/>
