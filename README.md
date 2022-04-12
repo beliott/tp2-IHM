@@ -22,7 +22,7 @@ Tout au long du TP, vous aurez certainement besoin de **consulter les pages de d
 
 Le but de ce TP est de vous familiariser avec la notion de [**Propriété**](https://wiki.openjdk.java.net/display/OpenJFX/JavaFX+Property+Architecture) en JavaFX. Pour un objet donné, les propriétés définissent son état accessible en lecture/écriture, et qui de plus, peut être _observé_ lors de son changement. 
 
-La notion sœur de propriété et la notion de **binding**. Il s'agit d'une valeur **X** qui est _liée_ à un certain nombre de valeurs observables **x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>...** : si un changement d'une des valeurs observables a lieu, alors **X** est automatiquement recalculé. Toutes les classes de propriétés de JavaFX permettent la création des bindings.
+La notion sœur de propriété et la notion de **binding**. Il s'agit d'une valeur **X** qui est _liée_ à un certain nombre de valeurs observables **x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>...** : si un changement d'une des valeurs observables a lieu, alors **X** est automatiquement recalculé. Toutes les classes de propriétés de JavaFX permettent la création des bindings et l'ajout des écouteurs de changement (**listeners**). Pensez à consulter le [cours et les différents supports](https://gitlabinfo.iutmontp.univ-montp2.fr/ihm/ressources) avant de poursuivre.
 
 ### Exercice 1 - Premières propriétés et bindings simples
 
@@ -132,8 +132,6 @@ Complétez la méthode `createBindings()` afin que :
 
 **Remarque** : n'oubliez pas d'initialiser correctement votre contrôleur...
 
-
-
 ### Exercice 6 - Bindings bidirectionnels
 
 Dans cet exercice, on cherche à visualiser la correspondance entre deux températures, l'une exprimée en degrés Celsius et l'autre en degrés Fahrenheit.
@@ -141,7 +139,7 @@ Pour cela, on utilisera 2 composants graphiques `Slider`, le premier (donnant la
 
 ![](images/Exo6.png)
 
-Pour plus d'informations sur la relation entre les deux unités de mesure de température et les règles de conversion : https://fr.wikipedia.org/wiki/Degr%C3%A9_Fahrenheit
+Pour plus d'information sur la relation entre les deux unités de mesure de température et les règles de conversion : https://fr.wikipedia.org/wiki/Degr%C3%A9_Fahrenheit
 
 1. Créez un binding bidirectionnel qui permettra que toute variation d'un des 2 curseurs provoque automatiquement le changement correspondant dans le second.
 
