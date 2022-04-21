@@ -43,7 +43,7 @@ On reprend l'exercice 2 du premier TP qui change la couleur d'un panneau et affi
 
 7. Extrayez les deux instructions de binding dans une méthode privée `createBindings()`. Dans cette méthode, déclarez et instanciez une variable `pasEncoreDeClic` de type `BooleanProperty`. Liez cette variable de façon à ce qu'elle change lorsque `nbFois` n'est plus égal à 0. Pour cela, retrouvez la version appropriée de la méthode `equal()` de `Bindings`.<br/>Transformez ensuite le binding sur le label `texteDuHaut` afin de gérer sa valeur initiale en utilisant `Bindings.when`.
 
-8. **Sans toucher au code** des gestionnaires d'événement de vos boutons, faites en sorte que le label `texteDuBas` affiche le texte en fonction de `message` et de `couleurPanneau`. Par exemple, si le bouton *Rouge* a été cliqué, le texte de `texteDuBas` devrait être colorié en rouge et afficher "*Le Rouge est une jolie couleur !*".
+8. **Sans toucher au code** des gestionnaires d'événement de vos boutons, faites en sorte que le label `texteDuBas` affiche le texte en fonction de `message` et de `couleurPanneau`. Par exemple, si le bouton *Rouge* a été cliqué, le texte de `texteDuBas` devrait être colorié en rouge et afficher "*Le Rouge est une jolie couleur !*". Pour faire le binding correspondant à la couleur du texte, vous pouvez faire un binding sur une des propriétés suivantes de l'attribut `texteDuBas` : `styleProperty()` ou `textFillProperty()`. Par exemple, la valeur de la propriété de style, devrait correspondre à "-fx-text-fill: MACOULEUR" ou _MACOULEUR_ et la couleur que vous souhaitez est celle du panneau.
 
 
 ### Exercice 2 - Écouteur de changement
