@@ -100,7 +100,7 @@ Voici un exemple de création de binding bas niveau pour le calcul de l'aire d'u
     DoubleBinding aireBinding = new DoubleBinding() {
         // constructeur de la classe interne anonyme
         {
-           this.bind(hauteur, largeur); // appel du constructeur de la classe mère (DoubleBinding)
+           this.bind(hauteur, largeur); // appel de la méthode bind(Observable... dépendances) de la classe mère (DoubleBinding)
         }
 
         @Override
