@@ -10,7 +10,6 @@
       [Nathalie Palleja](mailto:nathalie.palleja@umontpellier.fr),
       [Xavier Palleja](mailto:xavier.palleja@umontpellier.fr),
       [Petru Valicov](mailto:petru.valicov@umontpellier.fr)
-    * [Nihal Ouherrou](mailto:nihal.ouherrou@umontpellier.fr) -- responsable de la partie _Ergonomie_ du cours,
 * [Email](mailto:petru.valicov@umontpellier.fr) pour une question d'ordre privée concernant le cours.
 
 
