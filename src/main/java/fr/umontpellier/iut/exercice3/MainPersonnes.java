@@ -13,9 +13,7 @@ public class MainPersonnes  {
     private static ListChangeListener<Personne> unChangementListener;
 
     public static void main(String[] args) {
-
-        lesPersonnes = FXCollections.observableArrayList();
-
+        lesPersonnes = FXCollections.observableArrayList(personne -> new Observable[] {personne.ageProperty()});
         unChangementListener = new ListChangeListener<Personne>() {
             @Override
             public void onChanged(Change<? extends Personne> change) {
@@ -26,13 +24,33 @@ public class MainPersonnes  {
                     System.out.println(change.getRemoved().get(0).getNom() + " a été enlevé");
                 }
                 if (change.wasUpdated()){
-                    System.out.println(change.getList().get(0).getNom() + "a maintenant "+ change.getList().get(0).getAge() + " ans.");
+                    System.out.println(change.getList().get(change.getFrom()).getNom() + " a maintenant "+ change.getList().get(change.getFrom()).getAge() + " ans.");
                 }
             }
         };
+        //lesPersonnes.addListener(unChangementListener);
+        //question3()
 
-        lesPersonnes.addListener(unChangementListener);
-        question3();
+        ListChangeListener<Personne> plusieursChangementsListener = change -> {
+            while (change.next()) {
+                if (change.wasAdded()){
+                    for ( Personne p : change.getAddedSubList())
+                        System.out.println("On ajoute" + p.getNom());
+                }
+                if (change.wasRemoved()){
+                    for ( Personne p : change.getRemoved())
+                        System.out.println("On enleve" + p.getNom());
+                }
+                if (change.wasUpdated()){
+                    for (int i = change.getFrom(); i < change.getTo(); i++)
+                        System.out.println(change.getList().get(i).getNom() + " a maintenant " + change.getList().get(i).getAge());
+                }
+            }
+            System.out.println("Fin du Listener");
+        };
+
+        lesPersonnes.addListener(plusieursChangementsListener);
+        question5();
     }
 
     public static void question1() {
