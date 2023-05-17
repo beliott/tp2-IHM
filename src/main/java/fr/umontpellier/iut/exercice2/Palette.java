@@ -1,6 +1,8 @@
 package fr.umontpellier.iut.exercice2;
 
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -17,6 +19,8 @@ import javafx.stage.Stage;
 
 @SuppressWarnings("Duplicates")
 public class Palette extends Application {
+
+    ChangeListener<Number> nbClicsListener;
 
     private Label texteDuHaut;
 
@@ -36,6 +40,21 @@ public class Palette extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+
+        nbClicsListener = new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
+                // 3.
+                String couleurClic = sourceOfEvent.getCouleur();
+                panneau.setStyle("-fx-background-color: " + couleurClic);
+                texteDuHaut.setText(sourceOfEvent.getText() + " choisi " + t1 + " fois");
+                // 4.
+                texteDuBas.setText("Le "+ sourceOfEvent.getText()+ " est une jolie couleur !");
+                texteDuBas.setStyle("-fx-text-fill: " + sourceOfEvent.getCouleur());
+
+            }
+        };
+
         root = new BorderPane();
 
         texteDuHaut = new Label();
@@ -60,17 +79,22 @@ public class Palette extends Application {
 
         gestionnaireEvenement = (event) -> {
             sourceOfEvent = (CustomButton) event.getSource();
+            sourceOfEvent.setNbClics(sourceOfEvent.getNbClics() + 1);
         };
 
         vert.setOnAction(gestionnaireEvenement);
+        vert.nbClicsProperty().addListener(nbClicsListener);
         rouge.setOnAction(gestionnaireEvenement);
+        rouge.nbClicsProperty().addListener(nbClicsListener);
         bleu.setOnAction(gestionnaireEvenement);
+        bleu.nbClicsProperty().addListener(nbClicsListener);
+
 
         boutons.getChildren().addAll(vert, rouge, bleu);
 
         root.setCenter(panneau);
         root.setTop(texteDuHaut);
-        root.setBottom(boutons);
+        root.setBottom(bas);
 
         Scene scene = new Scene(root);
 
